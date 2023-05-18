@@ -9,7 +9,7 @@ const SetUpAndStartServer = async () => {
   app.use(bodyParser.urlencoded({ extended: true }));
 
   app.listen(PORT, () => {
-    console.log(`server ${3000} is running`);
+    console.log(`server ${PORT} is running`);
   });
 };
 SetUpAndStartServer();
