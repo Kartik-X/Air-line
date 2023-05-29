@@ -1,4 +1,4 @@
-const { CityRepository } = require("../repository/index");
+const { CityRepository } = require("../repository/index"); //Service layer for business logic
 
 class CityService {
   constructor() {
