@@ -8,7 +8,7 @@ class CityRepository {
       });
       return city;
     } catch (error) {
-      console.log("Something wen wrong in repository layer");
+      console.log("Something went wrong in repository layer");
       throw { error };
     }
   }
@@ -22,7 +22,7 @@ class CityRepository {
       });
       return true;
     } catch (error) {
-      console.log("Something wen wrong in repository layer");
+      console.log("Something went wrong in repository layer");
       throw { error };
     }
   }
@@ -32,21 +32,26 @@ class CityRepository {
       const city = City.findByPk(cityId);
       return city;
     } catch (error) {
-      console.log("Something wen wrong in repository layer");
+      console.log("Something went wrong in repository layer");
       throw { error };
     }
   }
 
   async updateCity(cityId, data) {
     try {
-      const city = await City.update(data, {
-        where: {
-          id: cityId,
-        },
-      });
+      //The below approach is also correct but will not return updated object
+      // const city = await City.update(data, {
+      //   where: {
+      //     id: cityId,
+      //   },
+      // });
+      //For getting updated data we use below approach
+      const city = await City.findByPk(cityId);
+      city.name = data.name;
+      await city.save();
       return city;
     } catch (error) {
-      console.log("Something wen wrong in repository layer");
+      console.log("Something went wrong in repository layer");
       throw { error };
     }
   }
